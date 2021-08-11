@@ -6,7 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hbase" />
+        <module name="weibo" />
+        <module name="hbaseDemo" />
       </profile>
     </annotationProcessing>
   </component>
