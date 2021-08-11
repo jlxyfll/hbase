@@ -2,9 +2,8 @@ package com.jxt.hbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;
-import org.apache.hadoop.hbase.client.Admin;
-import org.apache.hadoop.hbase.client.Connection;
-import org.apache.hadoop.hbase.client.ConnectionFactory;
+import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
 
@@ -112,6 +111,28 @@ public class HbaseDemo_1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 插入数据
+     *
+     * @param tableName
+     * @param rowKey
+     * @param cf
+     * @param cn
+     * @param value
+     */
+    public static void putData(String tableName, String rowKey, String cf, String cn, String value) throws IOException {
+        // 获取表对象
+        Table table = connection.getTable(TableName.valueOf(tableName));
+        // 创建put对象
+        Put put = new Put(Bytes.toBytes(rowKey));
+        // 给put对象赋值
+        put.addColumn(Bytes.toBytes(cf), Bytes.toBytes(cn), Bytes.toBytes(value));
+        // 插入数据
+        table.put(put);
+        // 关闭链接
+        table.close();
     }
 
     /**
