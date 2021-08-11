@@ -140,7 +140,7 @@ public class HbaseDemo_1 {
      *
      * @throws IOException
      */
-    public static void close() throws IOException {
+    public static void close() {
         if (admin != null) {
             try {
                 admin.close();
